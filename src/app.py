@@ -395,8 +395,8 @@ DataToCsv(x_test_sel_without_outliers_mMScale, "x_test_sel_without_outliers_mMSc
 
 ######## MACHINE LEARNING ######
 
-traindfs = [ x_train_sel_with_outliers, x_train_sel_without_outliers, x_train_sel_with_outliers_standarscale, x_train_sel_without_outliers_standarscale, x_train_sel_with_outliers_mMScale, x_train_sel_without_outliers_mMScale]
-testdfs = [ x_test_sel_with_outliers, x_test_sel_without_outliers, x_test_sel_with_outliers_standarscale, x_test_sel_without_outliers_standarscale, x_test_sel_with_outliers_mMScale, x_test_sel_without_outliers_mMScale]
+traindfs = [ x_train_sel_with_outliers, x_train_sel_without_outliers, x_train_sel_with_outliers_standarscale]
+testdfs = [ x_test_sel_with_outliers, x_test_sel_without_outliers, x_test_sel_with_outliers_standarscale]
 
 def DecisionTree (traindataset, testdataset):
     results = []
@@ -441,6 +441,8 @@ grid.best_params_
 #Guardamos el modelo entrenado
 
 clf = grid.best_estimator_
+
+dump(clf, open(f"../models/decision_tree.sav", "wb"))
 
 y_test_predict = clf.predict(x_test_sel_with_outliers)
 
