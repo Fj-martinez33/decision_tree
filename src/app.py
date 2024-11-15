@@ -274,8 +274,8 @@ def SplitData(dataset, target):
 x_train_with_outliers, x_test_with_outliers, y_train, y_test = SplitData(data_with_outliers, target)
 x_train_without_outliers, x_test_without_outliers, _, _ = SplitData(data_without_outliers, target)
 
-y_train.to_csv("../data/processed/y_train.csv")
-y_test.to_csv("../data/processed/y_test.csv")
+y_train.to_csv("../data/processed/y_train.csv", index_label = False)
+y_test.to_csv("../data/processed/y_test.csv", index_label = False)
 
 #Tenemos que escalar los dataset con Normalizacion y con Escala mM (min-Max)
 
@@ -378,7 +378,7 @@ x_test_sel_without_outliers_mMScale = SelectFeaturesTest(x_test_with_outliers, y
 #Para acabar nos guardamos los datasets en un csv
 
 def DataToCsv(dataset, filename):
-    return dataset.to_csv(f"../data/processed/{filename}.csv")
+    return dataset.to_csv(f"../data/processed/{filename}.csv", index_label = False)
 
 DataToCsv(x_train_sel_with_outliers, "x_train_sel_with_outliers")
 DataToCsv(x_test_sel_with_outliers, "x_test_sel_with_outliers")
